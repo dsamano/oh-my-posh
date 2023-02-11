@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "background": "green",
+          "foreground": "#f2f8f4",
+          "leading_diamond": "\ue0b6",
+          "style": "diamond",
+          "type": "os"
+        },
+        {
+          "background": "#9370db",
+          "foreground": "#f8f8f2",
+          "style": "diamond",
+          "template": " \uf007 {{.UserName}}",
+          "trailing_diamond": "\ue0b0",
+          "type": "session"
+        },
+        {
+          "background": "#778899",
+          "foreground": "#ffffff",
+          "powerline_symbol": "\ue0b0",
+          "properties": {
+            "folder_icon": "\uf755",
+            "folder_separator_icon": " \ue0b5 ",
+            "home_icon": "\uf7db",
+            "style": "agnoster"
+          },
+          "style": "powerline",
+          "template": " {{ .Path }}",
+          "type": "path"
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b4",
+          "foreground": "#000000",
+          "background": "#afeeee",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#f8f8f2{{ end }}",
+            "{{ if gt .Behind 0 }}#f8f8f2{{ end }}",
+            "{{ if gt .Ahead 0 }}#f8f8f2{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#000000{{ end }}"
+          ],
+          "background_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#d2691e{{ end }}",
+            "{{ if gt .Behind 0 }}#b22222{{ end }}",
+            "{{ if gt .Ahead 0 }}#008000{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ffd700{{ end }}"
+          ],
+          "template": " {{.UpstreamIcon}}\uf418 {{.BranchStatus}} {{.HEAD}}{{ if .Working.Changed }} \ue0b1 \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}{{ end }}{{ if .Staging.Changed }} \ue0b1 \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ue0b1 \uf692 {{ .StashCount }}{{ end }}",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true
+          }
+        },
+        {
+          "background": "#00897b",
+          "background_templates": [
+            "{{ if gt .Code 0 }}#e91e63{{ end }}"
+          ],
+          "foreground": "#ffffff",
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "powerline",
+          "powerline_symbol": "\ue0b4",
+          "template": " \ue23a ",
+          "type": "exit"
+        },
+        {
+          "type": "text",
+          "style": "powerline",
+          "powerline_symbol": "\ue0b4",
+          "foreground": "#111111",
+          "background": "#ffffff",
+          "template": " {{ if .Root }}\uf292{{ end }}{{if not .Root}}\uf155{{ end }}"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "segments": [
+        {
+          "background": "#0077c2",
+          "foreground": "#ffffff",
+          "style": "plain",
+          "template": "<#0077c2,transparent>\ue0b6</> \uf489 {{ .Name }} <transparent,#0077c2>\ue0b2</>",
+          "type": "shell"
+        }
+      ],
+      "type": "rprompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}

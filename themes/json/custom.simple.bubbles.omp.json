@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "green",
+          "style": "plain",
+          "type": "os"
+        },
+        {
+          "foreground": "#9370db",
+          "style": "plain",
+          "template": "\uf007 {{.UserName}} ",
+          "type": "session"
+        },
+        {
+          "background": "#0077c2",
+          "foreground": "#ffffff",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "in",
+          "type": "text"
+        },
+        {
+          "foreground": "#778899",
+          "properties": {
+            "folder_icon": "\uf755",
+            "folder_separator_icon": " \ue0b5 ",
+            "home_icon": "\uf7db",
+            "style": "agnoster"
+          },
+          "style": "plain",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "background": "#0077c2",
+          "foreground": "#ffffff",
+          "style": "diamond",
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b4",
+          "template": "on",
+          "type": "git"
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#afeeee",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#d2691e{{ end }}",
+            "{{ if gt .Behind 0 }}#b22222{{ end }}",
+            "{{ if gt .Ahead 0 }}#008000{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ffd700{{ end }}"
+          ],
+          "template": " {{.UpstreamIcon}}\uf418 {{.BranchStatus}} {{.HEAD}}{{ if .Working.Changed }} \ue0b1 \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}{{ end }}{{ if .Staging.Changed }} \ue0b1 \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ue0b1 \uf692 {{ .StashCount }}{{ end }}",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true,
+            "fetch_stash_count": true,
+            "fetch_upstream_icon": true
+          }
+        },
+        {
+          "foreground": "#00897b",
+          "foreground_templates": [
+            "{{ if gt .Code 0 }}#e91e63{{ end }}"
+          ],
+          "properties": {
+            "always_enabled": true
+          },
+          "style": "plain",
+          "template": " \ue23a ",
+          "type": "exit"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "template": "{{ if .Root }}\uf292{{ end }}{{if not .Root}}\uf155{{ end }}"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "segments": [
+        {
+          "foreground": "#0077c2",
+          "style": "plain",
+          "template": "\uf489 {{ .Name }}",
+          "type": "shell"
+        }
+      ],
+      "type": "rprompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
